@@ -1,0 +1,38 @@
+{% extends 'twinzsushiapp/base.html' %}
+{% block title %}Edit Reservation | TwinZ Sushi{% endblock %}
+{% block content %}
+
+<h2>Edit Reservation #{{ reservation.id }}</h2>
+
+<div class="content-card">
+
+    <p>
+        Customer:
+        <strong>{{ reservation.customer.customer_name }}</strong>
+    </p>
+
+    {% if order %}
+    <p>Order Total: ₱{{ order.total_amount }}</p>
+
+    <p>
+        Minimum Online Downpayment:
+        ₱{{ minimum_downpayment|floatformat:2 }}
+    </p>
+{% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-orange">
+            Save Changes
+        </button>
+
+        <a href="{% url 'reservations' %}" class="btn btn-light">
+            Cancel
+        </a>
+    </form>
+
+</div>
+{% endblock %}

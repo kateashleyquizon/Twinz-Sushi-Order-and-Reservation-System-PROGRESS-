@@ -1,0 +1,54 @@
+{% extends 'twinzsushiapp/base.html' %}
+{% block title %}Orders | TwinZ Sushi{% endblock %}
+{% block content %}
+
+<h2>Order Management</h2>
+<p class="page-description">
+    Manage walk-in customer orders.
+</p>
+
+<a href="{% url 'add_order' %}" class="btn btn-orange">
+    + Create In-store Order
+</a>
+
+<div class="content-card">
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Order Type</th>
+                <th>Total</th>
+                <th>Progress</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>{{ order.customer.customer_name }}</td>
+                <td>In-store</td>
+                <td>₱{{ order.total_amount }}</td>
+                <td>
+                    <span class="status">
+                        {{ order.order_status }}
+                    </span>
+                </td>
+                <td>
+                    <a href="{% url 'update_order' order.id %}">
+                        Update
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No in-store orders available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'twinzsushiapp/base.html' %}
+{% block title %}Transactions | TwinZ Sushi{% endblock %}
+{% block content %}
+
+<h2>Transaction History</h2>
+
+<div class="content-card">
+    <h3>In-store Order Transactions</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Transaction Type</th>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in in_store_transactions %}
+            <tr>
+                <td>#{{ item.id }}</td>
+                <td>{{ item.get_transaction_type_display }}</td>
+                <td>#{{ item.order.id }}</td>
+                <td>{{ item.transaction_date }}</td>
+                <td>₱{{ item.amount }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No in-store transactions.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="content-card">
+    <h3>Reservation Transactions</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Transaction Type</th>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in reservation_transactions %}
+            <tr>
+                <td>#{{ item.id }}</td>
+                <td>{{ item.get_transaction_type_display }}</td>
+                <td>#{{ item.order.id }}</td>
+                <td>{{ item.transaction_date }}</td>
+                <td>₱{{ item.amount }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No reservation transactions.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

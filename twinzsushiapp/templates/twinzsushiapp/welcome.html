@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | TwinZ Sushi</title>
+    <link rel="stylesheet" href="{% static 'twinzsushiapp/style.css' %}">
+</head>
+<body class="welcome-page">
+
+    <div class="welcome-content">
+        <div class="brand-logo">🍣</div>
+        <h1>TwinZ Sushi</h1>
+        <p>Twice as nice in every slice.</p>
+        <p class="welcome-subtitle">
+            Order and Reservation Management System
+        </p>
+
+        <a href="{% url 'login' %}" class="btn btn-orange">
+            Continue to Employee Login
+        </a>
+    </div>
+
+</body>
+</html>

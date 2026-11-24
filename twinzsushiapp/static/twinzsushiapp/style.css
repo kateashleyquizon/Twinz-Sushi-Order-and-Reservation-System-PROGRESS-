@@ -1,0 +1,389 @@
+
+/* =========================
+   GENERAL DESIGN
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #FFF1E8;
+    color: #38201B;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+.page-container {
+    padding: 30px;
+}
+
+.page-description {
+    color: #94766B;
+    margin-bottom: 22px;
+}
+
+
+/* =========================
+   WELCOME PAGE
+========================= */
+
+.welcome-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        120deg,
+        #A71927,
+        #E52D20,
+        #FF7900
+    );
+    color: white;
+    text-align: center;
+}
+
+.welcome-content {
+    padding: 30px;
+}
+
+.brand-logo {
+    font-size: 65px;
+}
+
+.welcome-content h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.welcome-subtitle {
+    margin: 25px 0;
+}
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        #A71927,
+        #E52D20,
+        #FF7900
+    );
+}
+
+.login-card {
+    background: #FFFFFF;
+    width: 380px;
+    max-width: 90%;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(90, 25, 15, 0.15);
+}
+
+.login-card h1 {
+    color: #C52125;
+    margin-bottom: 5px;
+}
+
+.login-card h2 {
+    margin-top: 30px;
+}
+
+.login-card form {
+    text-align: left;
+    margin-top: 25px;
+}
+
+
+/* =========================
+   MAIN HEADER
+========================= */
+
+.top-header {
+    background: linear-gradient(
+        110deg,
+        #A71927,
+        #D92320,
+        #F45A16,
+        #FF7900
+    );
+
+    color: white;
+    padding: 20px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-header h1 {
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+.top-header p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.header-user {
+    text-align: right;
+    font-size: 14px;
+}
+
+.logout-link {
+    color: white;
+    margin-left: 15px;
+}
+
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+
+.navbar {
+    background: #FFE0CC;
+    padding: 14px 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #A71927;
+    font-weight: bold;
+    margin-right: 22px;
+    transition: 0.2s;
+}
+
+.navbar a:hover {
+    color: #F45A16;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 3px;
+}
+
+.btn-orange {
+    background: linear-gradient(
+        90deg,
+        #E52D20,
+        #FF7900
+    );
+    color: white;
+}
+
+.btn-orange:hover {
+    opacity: 0.88;
+}
+
+.btn-light {
+    background: #FFE0CC;
+    color: #A71927;
+}
+
+
+/* =========================
+   DASHBOARD SUMMARY CARDS
+========================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.summary-card {
+    background: #FFFFFF;
+    padding: 22px;
+    border-radius: 14px;
+
+    border-left: 5px solid #FF7900;
+
+    box-shadow: 0 4px 12px rgba(140, 55, 25, 0.07);
+}
+
+.summary-card h3 {
+    color: #C52125;
+}
+
+.summary-card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #38201B;
+}
+
+
+/* =========================
+   CONTENT CARDS
+========================= */
+
+.content-card {
+    background: #FFFFFF;
+    padding: 22px;
+    margin-top: 22px;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 12px rgba(140, 55, 25, 0.07);
+
+    overflow-x: auto;
+}
+
+.content-card h3 {
+    color: #A71927;
+}
+
+
+/* =========================
+   TABLES
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #FFFFFF;
+}
+
+th {
+    background: linear-gradient(
+        90deg,
+        #C52125,
+        #E94B20,
+        #F47716
+    );
+
+    color: white;
+    text-align: left;
+}
+
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid #F4DDD0;
+    white-space: nowrap;
+}
+
+tr:hover {
+    background: #FFF5EE;
+}
+
+td a {
+    color: #D93624;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+td a:hover {
+    color: #FF7900;
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+form p {
+    margin-bottom: 16px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #74352A;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #F0CDBA;
+    border-radius: 7px;
+    background: #FFFAF6;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #F45A16;
+}
+
+.form-item {
+    padding: 15px;
+    margin: 15px 0;
+    background: #FFF1E8;
+    border-radius: 8px;
+}
+
+.errorlist {
+    color: #C52125;
+}
+
+
+/* =========================
+   ORDER STATUS
+========================= */
+
+.status {
+    color: #D94A20;
+    font-weight: bold;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 750px) {
+
+    .top-header {
+        display: block;
+    }
+
+    .header-user {
+        text-align: left;
+        margin-top: 15px;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .navbar a {
+        margin-right: 5px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-container {
+        padding: 15px;
+    }
+}

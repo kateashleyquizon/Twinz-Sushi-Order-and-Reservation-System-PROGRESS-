@@ -1,0 +1,53 @@
+{% extends 'twinzsushiapp/base.html' %}
+{% block title %}Reserved Orders | TwinZ Sushi{% endblock %}
+{% block content %}
+
+<h2>Reserved Order Monitoring</h2>
+
+<p class="page-description">
+    Monitor sushi items and progress for advance orders.
+</p>
+
+<div class="content-card">
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Customer</th>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+                <th>Sushi Items</th>
+                <th>Order Total</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for reservation in reservations %}
+                {% for order in reservation.order_set.all %}
+                <tr>
+                    <td>#{{ reservation.id }}</td>
+                    <td>{{ reservation.customer.customer_name }}</td>
+                    <td>{{ reservation.reservation_date }}</td>
+                    <td>{{ reservation.reservation_time }}</td>
+
+                    <td>
+                        {% for item in order.orderitem_set.all %}
+                            {{ item.menu_item.item_name }}
+                            (x{{ item.quantity }})<br>
+                        {% endfor %}
+                    </td>
+
+                    <td>₱{{ order.total_amount }}</td>
+                    <td>{{ order.order_status }}</td>
+                </tr>
+                {% endfor %}
+            {% empty %}
+            <tr>
+                <td colspan="7">No reserved orders available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

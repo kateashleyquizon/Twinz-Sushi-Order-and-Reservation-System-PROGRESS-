@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TwinZ Sushi{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'twinzsushiapp/style.css' %}">
+</head>
+<body>
+
+<header class="top-header">
+    <div>
+        <h1>TwinZ Sushi</h1>
+        <p>Order and Reservation Management System</p>
+    </div>
+    <div class="header-user">
+        Employee: {{ request.user.username }}
+        <a href="{% url 'logout' %}" class="logout-link">Log Out</a>
+    </div>
+</header>
+
+<nav class="navbar">
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'orders' %}">Orders</a>
+    <a href="{% url 'reservations' %}">Reservations</a>
+    <a href="{% url 'reservation_orders' %}">Reserved Orders</a>
+    <a href="{% url 'transactions' %}">Transactions</a>
+</nav>
+
+<main class="page-container">
+    {% block content %}
+    {% endblock %}
+</main>
+
+</body>
+</html>

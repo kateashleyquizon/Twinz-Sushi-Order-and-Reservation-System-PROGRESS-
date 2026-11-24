@@ -1,0 +1,34 @@
+
+{% extends 'twinzsushiapp/base.html' %}
+{% block title %}New Order | TwinZ Sushi{% endblock %}
+{% block content %}
+
+<h2>Create In-store Order</h2>
+
+<div class="content-card">
+    <form method="POST">
+        {% csrf_token %}
+
+        <h3>Customer Information</h3>
+        {{ form.as_p }}
+
+        <h3>Selected Sushi Items</h3>
+
+        {{ formset.management_form }}
+
+        {% for item in formset %}
+        <div class="form-item">
+            {{ item.as_p }}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-orange">
+            Save Order
+        </button>
+
+        <a href="{% url 'orders' %}" class="btn btn-light">
+            Cancel
+        </a>
+    </form>
+</div>
+{% endblock %}

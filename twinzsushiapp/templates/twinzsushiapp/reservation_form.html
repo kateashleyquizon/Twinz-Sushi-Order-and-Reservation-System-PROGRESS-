@@ -1,0 +1,28 @@
+{% extends 'twinzsushiapp/base.html' %}
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <h3>Customer and Reservation Information</h3>
+
+    {{ form.as_p }}
+
+    <h3>Reserved Sushi Items</h3>
+
+    {{ formset.management_form }}
+
+    {% for item_form in formset %}
+        <div class="card">
+            {{ item_form.as_p }}
+        </div>
+    {% endfor %}
+
+    <button type="submit">
+        Save Reservation and Order
+    </button>
+</form>
+
+{% endblock %}

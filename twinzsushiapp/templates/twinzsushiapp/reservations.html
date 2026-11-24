@@ -1,0 +1,84 @@
+{% extends 'twinzsushiapp/base.html' %}
+{% block title %}Reservations | TwinZ Sushi{% endblock %}
+{% block content %}
+
+<h2>Reservation Management</h2>
+
+<p class="page-description">
+    Monitor incoming advance orders from TwinZ Sushi customers.
+</p>
+
+<div class="content-card">
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Customer</th>
+                <th>Delivery Option</th>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+                <th>Order Details</th>
+                <th>Order Total</th>
+                <th>Payment Method</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>#{{ reservation.id }}</td>
+                <td>{{ reservation.customer.customer_name }}</td>
+                <td>{{ reservation.delivery_option }}</td>
+                <td>{{ reservation.reservation_date }}</td>
+                <td>{{ reservation.reservation_time }}</td>
+
+                <td>
+                    {% with order=reservation.order_set.first %}
+                        {% if order %}
+                            {% for item in order.orderitem_set.all %}
+                                {{ item.menu_item.item_name }} (x{{ item.quantity }})
+                                <br>
+                            {% endfor %}
+                        {% else %}
+                            No linked order
+                        {% endif %}
+                    {% endwith %}
+                </td>
+
+                <td>
+                    {% with order=reservation.order_set.first %}
+                        {% if order %}
+                            ₱{{ order.total_amount }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    {% endwith %}
+                </td>
+
+                <td>{{ reservation.payment_method }}</td>
+                <td>{{ reservation.reservation_status }}</td>
+
+                <td>
+                    <a href="{% url 'edit_reservation' reservation.id %}">
+                        Edit
+                    </a>
+                    <br>
+                    <a href="{% url 'update_reservation' reservation.id %}">
+                        Update Status
+                    </a>
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="10">
+                    No incoming reservations available.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
